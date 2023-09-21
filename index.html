@@ -11,9 +11,22 @@
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 		<script src="js/project.js"></script>
 	</head>
+	<script>
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		id = urlParams.get("id");
+		albumId = urlParams.get("albumid");
+
+		var myId = id ? id : -1;
+		var myalbumId = albumId ? albumId : -1;
+		//console.log(myParam);
+		loadPage(myId, myalbumId);
+		console.log(myId);
+		console.log(albumId);
+	</script>
 	<body>
 		<header class="bg-primary text-center py-3">
-			<h1>Mi Página Web</h1>
+			<h1>Bootstrap + API Externo</h1>
 		</header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#">Consultas de Api Externo</a>
@@ -34,51 +47,50 @@
 							>Inicio <span class="sr-only">(actual)</span></a
 						>
 					</li>
+
 					<li class="nav-item">
-						<a class="nav-link" href="#">Acerca de</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contacto</a>
+						<a
+							class="nav-link"
+							href="https://jaimeescoto.github.io/MyPublicWebPageBeta/"
+							>Contacto</a
+						>
 					</li>
 				</ul>
 			</div>
 		</nav>
-
-		<button
-			type="button"
-			class="btn btn-dark"
-			id="miBoton"
-			onclick="getUsers()">
-			Obtener Usuarios
-		</button>
-		<div id="datosPersona">hehe</div>
-
-		<table id="Table"></table>
-
-		<div class="container my-5">
-			<div class="row justify-content-center" id="Users">
-				<div class="card" style="width: 18rem">
-					<img src="..." class="card-img-top" alt="..." />
-					<div class="card-body">
-						<h5 class="card-title">Título de la Tarjeta</h5>
-						<p class="card-text">Texto de ejemplo.</p>
-						<a href="#" class="btn btn-primary">Ver Galeria</a>
-					</div>
-				</div>
-				<div class="card" style="width: 18rem">
-					<img src="..." class="card-img-top" alt="..." />
-					<div class="card-body">
-						<h5 class="card-title">Título de la Tarjeta</h5>
-						<p class="card-text">Texto de ejemplo.</p>
-						<a href="#" class="btn btn-primary">Ver Galeria</a>
-					</div>
-				</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Indicaciones</h5>
+				<p class="card-text">
+					Para realizar las consultas del servicio:
+					https://jsonplaceholder.typicode.com/, hacer clic en los botones.
+				</p>
 			</div>
 		</div>
-		<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-			<button type="button" class="btn btn-danger">Left</button>
-			<button type="button" class="btn btn-warning">Middle</button>
-			<button type="button" class="btn btn-success">Right</button>
+		<br />
+
+		<div class="container-fluid text-center">
+			<div class="row content">
+				<div class="col-sm-2 sidenav">
+					<h1 class="text-center">Usuarios</h1>
+					<div class="container my-5">
+						<div class="row justify-content-center" id="Users"></div>
+					</div>
+				</div>
+				<div class="col-sm-4 text-left">
+					<h1 class="text-center">Albums</h1>
+					<div class="container my-5">
+						<div class="row justify-content-center" id="Albums"></div>
+					</div>
+				</div>
+				<div class="col-sm-6 sidenav">
+					<h1 class="text-center">Fotos</h1>
+					<div class="container my-5">
+						<div class="row justify-content-center" id="Fotos"></div>
+					</div>
+					<img src="..." class="img-thumbnail" alt="..." />
+				</div>
+			</div>
 		</div>
 
 		<footer class="bg-primary text-center py-3">
